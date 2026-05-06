@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <base href="./">
+  <title>乱斗棋盘</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚔️</text></svg>" type="image/svg+xml">
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════════════════════ MAIN MENU ══ -->
+  <div id="screen-main-menu" class="screen">
+    <div class="menu-bg"></div>
+    <div class="menu-container">
+      <h1 class="game-title">乱斗棋盘</h1>
+      <p class="game-subtitle">回合制战棋 · 猜拳决胜</p>
+      <div class="menu-buttons">
+        <button id="btn-new-game"  class="menu-btn primary">新 游 戏</button>
+        <button id="btn-continue"  class="menu-btn hidden">继续游戏</button>
+        <button id="btn-stats"     class="menu-btn">统计数据</button>
+        <button id="btn-delete-save" class="menu-btn danger hidden">删除存档</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════ HERO SELECT ══ -->
+  <div id="screen-hero-select" class="screen hidden">
+    <div class="hero-select-container">
+      <h2 class="section-title">选择你的英雄</h2>
+      <div id="hero-select-grid" class="hero-select-grid"></div>
+      <div class="hero-select-footer">
+        <button id="btn-confirm-hero" class="menu-btn primary" disabled>确认选择</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════ BATTLE ══ -->
+  <div id="screen-battle" class="screen hidden">
+
+    <!-- Top bar -->
+    <div class="battle-topbar">
+      <div class="compass-indicator">▲ N</div>
+      <div id="round-info" class="round-info">第 0 回合</div>
+      <div id="status-bar" class="status-bar"></div>
+      <button id="btn-save-exit" class="topbar-btn">💾 保存并退出</button>
+    </div>
+
+    <!-- Three-column layout -->
+    <div class="battle-layout">
+
+      <!-- Left sidebar (Player) -->
+      <aside id="sidebar-left" class="sidebar sidebar-player">
+        <button class="sidebar-toggle" data-side="left">◀</button>
+        <div class="sidebar-content"></div>
+      </aside>
+
+      <!-- Central area -->
+      <main class="board-area">
+        <!-- Board -->
+        <div class="board-wrapper">
+          <div id="board" class="board-grid"></div>
+          <!-- Row labels on the right -->
+          <div class="row-labels" id="row-labels"></div>
+        </div>
+
+        <!-- Panel below board -->
+        <div id="action-panel" class="action-panel">
+          <div id="rps-panel"            class="panel rps-panel"></div>
+          <div id="battle-actions-panel" class="panel hidden"></div>
+        </div>
+
+        <!-- Battle log -->
+        <div class="battle-log">
+          <div class="log-header">战斗日志</div>
+          <div id="log-entries" class="log-entries"></div>
+        </div>
+      </main>
+
+      <!-- Right sidebar (Computer) -->
+      <aside id="sidebar-right" class="sidebar sidebar-computer">
+        <button class="sidebar-toggle" data-side="right">▶</button>
+        <div class="sidebar-content"></div>
+      </aside>
+
+    </div><!-- /battle-layout -->
+
+    <!-- Floating message overlay -->
+    <div id="float-msg-overlay" class="float-msg-overlay">
+      <div id="float-msg" class="float-msg"></div>
+    </div>
+
+  </div><!-- /screen-battle -->
+
+  <!-- ════════════════════════════════════════════════════ GAME OVER ══ -->
+  <div id="screen-game-over" class="screen hidden">
+    <div class="game-over-container">
+      <div id="game-over-result" class="game-over-result">—</div>
+      <div id="game-over-stats" class="game-over-stats"></div>
+      <div class="game-over-buttons">
+        <button id="btn-play-again"   class="menu-btn primary">再来一局</button>
+        <button id="btn-back-to-menu" class="menu-btn">返回主菜单</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════ STATS ══ -->
+  <div id="screen-stats" class="screen hidden">
+    <div class="stats-container">
+      <h2 class="section-title">统计数据</h2>
+      <div id="stats-content" class="stats-content"></div>
+      <button id="btn-stats-back" class="menu-btn">← 返回</button>
+    </div>
+  </div>
+
+  <script type="module" src="./js/main.js"></script>
+</body>
+</html>
